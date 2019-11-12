@@ -9,6 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from nanpy import interpolation
 
+plt.ion()
+
 ##############################################################################
 # True Function
 ##############################################################################
@@ -71,3 +73,4 @@ plt.plot(x,     y_spline, 'm-', label="Spline")
 plt.title("Clamped Spline")
 plt.legend()
 plt.show()
+input("Press enter to close.")
