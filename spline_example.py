@@ -9,8 +9,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from nanpy import interpolation
 
-plt.ion()
-
 ##############################################################################
 # True Function
 ##############################################################################
@@ -40,10 +38,10 @@ yData = np.array([y0, y1, y2, y3])
 ##############################################################################
 
 x = np.linspace(min(xData), max(xData), 90)
-spline_func = interpolation.spline_natural(xData, yData)
+spline_func_natural = interpolation.spline_natural(xData, yData)
 
 y_true = true_function(x)
-y_spline = spline_func(x)
+y_spline = spline_func_natural(x)
 
 plt.figure()
 plt.plot(xData, yData,    'ro')
@@ -51,7 +49,6 @@ plt.plot(x,     y_true,   'b-', label="True")
 plt.plot(x,     y_spline, 'm-', label="Spline")
 plt.title("Natural Spline")
 plt.legend()
-plt.show()
 
 ##############################################################################
 # Clamped Spline Function
@@ -61,10 +58,10 @@ fda = true_function_d(xData[0])
 fdb = true_function_d(xData[3])
 
 x = np.linspace(min(xData), max(xData), 90)
-spline_func = interpolation.spline_clamped(xData, yData, [fda, fdb])
+spline_func_clamped = interpolation.spline_clamped(xData, yData, [fda, fdb])
 
 y_true = true_function(x)
-y_spline = spline_func(x)
+y_spline = spline_func_clamped(x)
 
 plt.figure()
 plt.plot(xData, yData,    'ro')
@@ -73,4 +70,3 @@ plt.plot(x,     y_spline, 'm-', label="Spline")
 plt.title("Clamped Spline")
 plt.legend()
 plt.show()
-input("Press enter to close.")
